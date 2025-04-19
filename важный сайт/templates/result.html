@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат теста</title>
+    <style>
+        body {
+            background-color: #eafbe7;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .result {
+            font-size: 32px;
+            background-color: #a3d977;
+            color: white;
+            display: inline-block;
+            padding: 30px 40px;
+            border-radius: 12px;
+        }
+        a {
+            display: block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        img {
+            margin-top: 40px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result">
+        Твой уровень экологичности: {{ percent }}%
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename=image) }}" alt="Результат" class="result-img">
+        <div class="caption">
+            {% if percent >= 80 %}
+                Отличный результат! Ты — супер экологист!
+            {% elif percent >= 50 %}
+                1.Больше ходи пешком или используй велик/общественный транспорт!
+                2.Старайся покупать местные продукты и вещи, это снижает углеродный след!
+            {% else %}
+                1.Начни сортировать мусор - это простой шаг, который реально помогает природе!
+                2.Замени одноразовые бутылки пакеты на многоразовые - это экономно и экологично!
+            {% endif %}
+        </div>
+    </div>
+    <a href="/">Пройти ещё раз</a>
+</body>
+</html>
